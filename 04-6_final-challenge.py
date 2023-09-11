@@ -28,27 +28,25 @@ scissors = '''
 '''
 
 #Write your code below this line 👇
-choice = [rock, paper, scissors]
+game_images = [rock, paper, scissors]
 
-prompt = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
-
-if prompt == 0:
-  print(choice[0])
-elif prompt == 1:
-  print(choice[1])
-elif prompt == 2:
-  print(choice[2])
-
-computer_choice = random.choice(choice)
-print(f"Computer chose:\n{computer_choice}")
-
-if prompt == computer_choice:
-  print("It's a draw")
-if prompt == choice[0] and computer_choice == choice[2]:
-  print("You win")
-elif prompt == choice[2] and computer_choice == choice[1]:
-   print("You win")
-elif prompt == choice[1] and computer_choice == choice[0]:
-  print("You win")
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+if user_choice >= 3 or user_choice < 0:
+  print("You typed an invalid number, you lose!")
 else:
-  print("You lose")
+  print(game_images[user_choice])
+  
+  computer_choice = random.randint(0, 2)
+  print("Computer chose:")
+  print(game_images[computer_choice])
+  
+  if user_choice == 0 and computer_choice == 2:
+    print("You win!")
+  elif computer_choice == 0 and user_choice == 2:
+    print("You lose!")
+  elif computer_choice > user_choice:
+     print("You lose")
+  elif user_choice > computer_choice:
+    print("You win")
+  elif computer_choice == user_choice:
+    print("It's a draw")
